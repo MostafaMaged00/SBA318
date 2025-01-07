@@ -5,9 +5,13 @@ const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 4000;
 
-//bodyparser setup
+//Middleware setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.json());
+
+//Use static pages
+
 //Import routes
 const userRoutes = require("./routes/usersRoute");
 app.use("/users", userRoutes);
