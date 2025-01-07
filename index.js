@@ -2,8 +2,15 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 4000;
 
+//bodyparser setup
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+//Import routes
+const userRoutes = require("./routes/usersRoute");
+app.use("/users", userRoutes);
 //GET - Home route
 app.get("/", (req, res) => {
   res.send(`Home Page`);
