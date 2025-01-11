@@ -27,6 +27,14 @@ const users = [
 router.get("/", (req, res) => {
   res.send(users); //get all users
 });
+//get - get req
+router.get("/:id", (req, res) => {
+  //get id from req
+  let id = parseInt(req.params.id);
+  const data = users.filter((user) => user.id == id);
+  // return res.status(200).send({ message: "User found", data });
+  return res.status(200).send({ data });
+});
 
 //Post - post req
 router.post("/", (req, res) => {
